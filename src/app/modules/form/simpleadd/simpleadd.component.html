@@ -1,0 +1,158 @@
+<div class="container-fluid">
+  <form  [formGroup]="addmore" (ngSubmit)="manualGenerate();">
+  <div class="card">
+    <div class="card-header text-center">Add Frequency</div>
+    <div class="card-body">
+
+
+        <div class="row">
+          
+          <div class="col-sm-4">
+            <mat-form-field appearance="outline">
+              <mat-label>level</mat-label>
+              <mat-select formControlName="level">
+                <mat-option value="A1">
+                  A1
+                </mat-option>
+                <mat-option value="A2">
+                  A2
+                </mat-option>
+                <mat-option value="B1">
+                  B1
+                </mat-option>
+                <mat-option value="B2">
+                  B2
+                </mat-option>
+                <mat-option value="C1">
+                  C1
+                </mat-option>
+                <mat-option value="C2">
+                  C2
+                </mat-option>
+                <!-- <mat-option *ngFor="let parentPOSDepartment of parentPOSDepartment"
+                  [value]="parentPOSDepartment.id">
+                  {{parentPOSDepartment.text}}
+                </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+               
+          </div>
+          <div class="col-sm-8">
+            <mat-form-field appearance="outline">
+              <mat-label>Total</mat-label>
+              <input matInput type="number"  formControlName="total">
+              <!-- <mat-error *ngIf="(f.title.dirty && f.title.invalid==true )">
+                <span>Please Enter Valid Number</span>
+              </mat-error> -->
+            </mat-form-field>
+          </div>
+          <!-- <div class="col-sm-4">
+               <mat-form-field appearance="outline">
+                  <mat-label>descripition</mat-label>
+                  <textarea matInput  formControlName="descripition"></textarea>
+                </mat-form-field>
+          </div> -->
+          <!-- <div class="col-sm-1">
+            <button mat-mini-fab color="primary"><i class="fa fa-plus" aria-hidden="true"></i></button>
+          </div> -->
+        </div>
+        <!-- <form [formGroup]="addmore" #indentAddForm=ngForm  (ngSubmit)="onSubmit()" > -->
+                <div class="row">
+                  <div class="col-sm-12 table-responsive" formArrayName="types">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th style="white-space: nowrap;padding-right: 4em;float:center"><span class="required-field"></span>Type </th>
+                          <th style="white-space: nowrap;padding-right: 4em;float:center"><span class="required-field"></span>Frequency </th>
+                          
+                          <!-- <th style="white-space: nowrap;padding-right: 4em;float:center">Learn </th>
+                          <th style="white-space: nowrap;padding-right: 4em;float:center">Descripition </th>
+                          <th style="white-space: nowrap;padding-right: 4em;float:center">Suggestion</th> -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let itemrow of addmore.controls.types['controls']; let i=index"  [formGroupName]="i">
+
+                          <td style="white-space: nowrap;">
+                            <div class="col-sm-4">
+                              <mat-form-field appearance="outline">
+                                <mat-label>Type</mat-label>
+                                <mat-select formControlName="type">
+                                  <mat-option value="TYPE1_CTCW">
+                                    TYPE1_CTCW
+                                  </mat-option>
+                                  <mat-option value="TYPE2_MTF">
+                                    TYPE2_MTF
+                                  </mat-option>
+                                  <mat-option value="TYPE3_VTT">
+                                    TYPE3_VTT
+                                  </mat-option>
+                                  <mat-option value="TYPE4_LSTN_C">
+                                    TYPE4_LSTN_C
+                                  </mat-option>
+                                  <mat-option value="TYPE5_SPLL">
+                                    TYPE5_SPLL
+                                  </mat-option>
+                                  <mat-option value="TYPE6_MTP">
+                                    TYPE6_MTP
+                                  </mat-option>
+                                  <mat-option value="TYPE7_LSTN_S">
+                                    TYPE7_LSTN_S
+                                  </mat-option><mat-option value="TYPE8_SRW">
+                                    TYPE8_SRW
+                                  </mat-option><mat-option value="TYPE9_LSTN_TYPE">
+                                    TYPE9_LSTN_TYPE
+                                  </mat-option><mat-option value="TYPE10_CTACW">
+                                    TYPE10_CTACW
+                                  </mat-option><mat-option value="TYPE11_JMBL">
+                                    TYPE11_JMBL
+                                  </mat-option><mat-option value="TYPE12_FITB">
+                                    TYPE12_FITB
+                                  </mat-option>
+                                  <!-- <mat-option *ngFor="let parentPOSDepartment of parentPOSDepartment"
+                                    [value]="parentPOSDepartment.id">
+                                    {{parentPOSDepartment.text}}
+                                  </mat-option> -->
+                                </mat-select>
+                              </mat-form-field>
+                                 
+                            </div>
+                          </td>
+                          
+                         <!-- <td style="white-space: nowrap;"> <input readonly id="learn{{i}}" formControlName="learn" class="form-control"></td> -->
+                          <!-- <td> <input formControlName="bf_stock" readonly id="bfStock{{i}}" class="form-control reset"></td> -->
+                          <td style="white-space: nowrap;">
+                            <div class="col-sm-3">
+                              <mat-form-field appearance="outline">
+                                <mat-label>Frequency</mat-label>
+                                <input matInput type="number"  formControlName="frequency">
+                                <!-- <mat-error *ngIf="(f.title.dirty && f.title.invalid==true )">
+                                  <span>Please Enter Valid Number</span>
+                                </mat-error> -->
+                              </mat-form-field>
+                            </div>
+                          </td>
+                          
+                          <!-- <td> <textarea id="learn{{i}}" formControlName="learn" class="form-control reset"></textarea></td>
+                          <td> <textarea formControlName="descripition" class="form-control reset"></textarea></td>
+                          <td> <textarea formControlName="suggestion" class="form-control reset"></textarea></td> -->
+                          <td> <button *ngIf="addmore.controls.types.controls.length > 1" (click)="deleteRow(i)" class="btn btn-danger"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></td>  
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr><td> <button type="button" (click)="addNewRow(i)" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></td></tr>
+                      </tfoot>
+                    </table>
+                </div>
+
+              </div>
+              <!-- </form> -->
+
+    </div>
+    <div class="card-footer">
+       <button type="submit" mat-raised-button color="primary" >Submit</button>
+    </div>
+  </div>
+</form>
+
+</div>
